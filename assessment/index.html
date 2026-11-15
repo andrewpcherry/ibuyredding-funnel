@@ -538,6 +538,7 @@ body{background:transparent;font-size:17.5px}
 .consent{border-radius:14px;border:1px solid #DCE7EE}
 .err{border-width:0;border-left:5px solid var(--crimson);border-radius:14px}
 .done .tick{background:linear-gradient(135deg,#12A06B,#24B2E3)}
+.consent .opt{color:var(--ink);font-weight:800;margin-right:2px}.consent span{line-height:1.5}
 </style></head><body><section id="quiz"><div class="wrap">
   <span class="eyebrow">Start here</span>
   <h2 class="sec-h">What’s happening with your house?</h2>
@@ -1092,14 +1093,13 @@ function outcomeHtml(){
     h+='<div style="margin-top:14px"><label class="fl" for="'+m.extra.name+'">'+esc(m.extra.label)+'</label>'
       +'<textarea class="in" id="'+m.extra.name+'" name="'+m.extra.name+'" rows="3"></textarea></div>';
   }
-  /* Consent wording carried over from the REI template default. IBuyRedding's
-     own SMS consent wording has not been confirmed yet. Confirm the
+  /* SMS consent wording supplied by the client on 2026-11-16. Optional and
+     unchecked; it covers inquiry and appointment messages only. Confirm the
      current A2P registration wording with the client before this runs
      on paid traffic, and do not reword it here on your own. */
-  h+='<label class="consent"><input type="checkbox" id="consent">'
-    +'<span>(Optional) I agree to receive text messages from IBuyRedding. Message and data rates may '
-    +'apply. I agree to the <a href="'+CONFIG.privacy+'" target="_blank" rel="noopener">Terms and '
-    +'Conditions</a> and <a href="'+CONFIG.privacy+'" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>'
+  h+='<label class="consent"><input type="checkbox" id="consent" name="smsConsent" value="yes">'
+    +'<span><b class="opt">Optional.</b> I agree to receive non-marketing text messages from Manzo Capital LLC, operating as IBuyRedding, about my property inquiry, including follow-ups and appointment confirmations. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for assistance. Consent is not required to submit an inquiry or use our services. '
+    +'<a href="/ibuyredding-funnel/sms-terms/" target="_blank" rel="noopener">SMS Terms</a> · <a href="/ibuyredding-funnel/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></span></label>'
     +'<div id="formErr"></div>'
     +'<button class="btn btn-g" onclick="submitLead()">'+(isGuide?"Finish Preview":"Finish Preview")+'</button>'
     +'<div class="fineprint">Preview only. Please use made-up contact details. No information is sent.</div></div>'

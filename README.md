@@ -10,8 +10,10 @@ Built from the REI template default (andrewpcherry/homebuyerswi-funnel), rebrand
 
 ## Before launch
 
-- Confirm IBuyRedding's own SMS consent wording. The assessment still uses the template's wording.
-- Connect inquiry delivery to the client's CRM and test a conversion.
+- SMS consent uses the client's wording (16 November 2026): optional, unchecked, not required to submit, inquiry and appointment messages only. Promotional texting would need separate consent. `sms-terms/` covers the program; SMS Terms and Privacy Policy are linked beside the checkbox and in the footer.
+- The Privacy Policy was rewritten around what this site does and now protects mobile numbers and SMS consent records from third-party marketing. Manzo should confirm it matches its actual practices (CRM and messaging providers, analytics and ad tags, data requests) before launch.
+- The site says "Call" only until texting on the public number (530) 638-2296 is verified. Never publish Oscar's private notification number.
+- Keep preview mode until inquiry delivery is finished: test receipt in Manzo's GHL account, Oscar's notification and conversion tracking before showing a genuine success message.
 - Swap the preview base path (`/ibuyredding-funnel/`) and noindex settings, then get client approval before any DNS change.
 
 ## Files

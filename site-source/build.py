@@ -103,7 +103,7 @@ def header():
             f'<header class="site-header" data-header><div class="container nav">'
             f'<a class="logo" href="{link()}"><img src="{link("img/logo.svg")}" alt="{BRAND} home" width="195" height="69"></a>'
             f'<nav id="navigation" aria-label="Main navigation">' + ''.join(f'<a href="{link(p) if not p.startswith("#") else link() + p}">{n}</a>' for n, p in NAV) + '</nav>'
-            f'<div class="nav-right"><a class="nav-phone" href="{TEL}">{icon("phone")}<span><small>Call or text a local buyer</small>{PHONE}</span></a>'
+            f'<div class="nav-right"><a class="nav-phone" href="{TEL}">{icon("phone")}<span><small>Call a local buyer</small>{PHONE}</span></a>'
             f'<a class="btn btn-sm" href="{QUIZ}">Get my cash offer</a>'
             f'<button class="menu-toggle" aria-expanded="false" aria-controls="navigation"><span></span><span></span><span class="sr">Menu</span></button></div>'
             f'</div></header>')
@@ -123,9 +123,9 @@ def footer(sticky=True):
             f'<div class="footer-brand"><span class="logo-chip"><img src="{link("img/logo.svg")}" alt="{BRAND}" width="195" height="69"></span>'
             f'<p>Local cash home buyers.<br>{MARKET}.</p>{g_badge("dark")}</div>'
             f'<div><b>Explore</b><a href="{link("about/")}">About {BRAND}</a><a href="{link()}#process">How it works</a><a href="{link()}#compare">Traditional vs. {BRAND}</a><a href="{link()}#stories">Seller reviews</a><a href="{link("local-businesses-in-redding--ca/")}">Local businesses</a></div>'
-            f'<div><b>For homeowners</b><a href="{link("blog/")}">Seller resources</a><a href="{link("sell-inherited-house-redding/")}">Inherited a house</a><a href="{link("faq/")}">Frequently asked questions</a><a href="{link("privacy-policy/")}">Privacy policy</a></div>'
+            f'<div><b>For homeowners</b><a href="{link("blog/")}">Seller resources</a><a href="{link("sell-inherited-house-redding/")}">Inherited a house</a><a href="{link("faq/")}">Frequently asked questions</a><a href="{link("privacy-policy/")}">Privacy policy</a><a href="{link("sms-terms/")}">SMS terms</a></div>'
             f'<div><b>We buy houses in</b>' + ''.join(f'<a href="{link()}#areas">{c}</a>' for c in COUNTIES) + '</div>'
-            f'<div><b>Start a conversation</b><a class="footer-phone" href="{TEL}">{PHONE}</a><p>Call or text<br>{BRAND} is a brand of {OWNER}</p></div>'
+            f'<div><b>Start a conversation</b><a class="footer-phone" href="{TEL}">{PHONE}</a><p>{BRAND} is a brand of {OWNER}</p></div>'
             f'</div><div class="container footer-bottom">© 2026 {OWNER} <span>Website preview · No inquiries are sent from this preview.</span></div></footer>'
             f'{s}<script src="{link("assets/site.js?v=" + CSS_V)}" defer></script>')
 
@@ -200,7 +200,8 @@ def clean_html(frag):
     for e in soup.find_all(['p', 'li', 'h2', 'h3', 'h4']):
         if not e.get_text(strip=True) and not e.find('img'):
             e.decompose()
-    return str(soup)
+    # Texting on the public number is not verified yet, so the site says "Call" only.
+    return re.sub(r'\b([Cc])all or [Tt]ext\b', r'\1all', str(soup))
 
 
 def durable_page(name):
@@ -251,9 +252,61 @@ STANDARD = [
     ('local-businesses-in-redding--ca', 'local-businesses-in-redding--ca/', 'Local Businesses in Redding, CA', 'Local businesses'),
     ('privacy-policy', 'privacy-policy/', 'Privacy policy', 'Privacy policy'),
 ]
+UPDATED = 'November 16, 2026'
+PRIVACY_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
+<p>{BRAND} is a brand owned and operated by {OWNER} (“{BRAND}”, “we”, “us”). This Privacy Policy explains what information we collect when you use this website or contact us, how we use it, and the choices you have.</p>
+<h2>Information we collect</h2>
+<ul><li><strong>Information you give us.</strong> When you complete our property questionnaire or contact us, we collect your name, phone number, email address, property address, and your answers about the property and your situation.</li>
+<li><strong>Your text message choice.</strong> If you tick the optional SMS box, we record that you consented, when, and the page you consented on. If you reply STOP, we record that too.</li>
+<li><strong>Website usage.</strong> Like most websites, we may collect browser type, IP address and pages visited to understand how the site is used.</li></ul>
+<h2>How we use your information</h2>
+<ul><li>To review your property, respond to your inquiry, and prepare and discuss an offer.</li>
+<li>To call you, and, only if you consented, to send non-marketing text messages about your inquiry, including follow-ups and appointment confirmations.</li>
+<li>To keep records of our conversations and transactions, and to meet legal obligations.</li></ul>
+<p>We do not send promotional text messages unless you have given separate consent for them.</p>
+<h2>Mobile numbers and SMS consent</h2>
+<p><strong>We do not sell, rent or share your mobile phone number or your SMS consent with third parties or affiliates for their marketing or promotional purposes.</strong> Text messaging opt-in data and consent records are never shared with any third party, except with the service providers that deliver our messages on our behalf and are not permitted to use them for anything else.</p>
+<p>See our <a href="{link("sms-terms/")}">SMS Terms</a> for how our text messages work, including how to opt out.</p>
+<h2>When we share information</h2>
+<p>We do not sell your personal information. We share it only:</p>
+<ul><li>With service providers that help us run our business, such as our customer relationship management system, phone and text messaging providers, and website hosting, who may use it only to provide those services to us;</li>
+<li>With title, escrow and other professionals needed to complete a transaction you choose to move forward with; and</li>
+<li>When required by law, or to protect our rights or the safety of others.</li></ul>
+<h2>Keeping your information secure</h2>
+<p>We take reasonable steps to protect your information from unauthorized access, alteration, disclosure or destruction, and limit access to the people who need it to respond to you.</p>
+<h2>Your choices</h2>
+<ul><li>Reply <strong>STOP</strong> to any text message to stop receiving texts. Reply <strong>HELP</strong> for help.</li>
+<li>Call us at <a href="{TEL}">{PHONE}</a> to ask what information we hold about you, or to ask us to correct or delete it. California residents may have additional rights under California law.</li></ul>
+<h2>Changes to this policy</h2>
+<p>We may update this policy from time to time. The date at the top shows when it last changed.</p>
+<h2>Contact us</h2>
+<p>{OWNER}, operating as {BRAND}<br>Phone: <a href="{TEL}">{PHONE}</a><br>Website: <a href="{link()}">ibuyredding.com</a></p>'''
+
+SMS_TERMS_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
+<h2>Program</h2>
+<p>{OWNER}, operating as {BRAND}, sends non-marketing text messages about property inquiries to people who opt in on our website. Messages include follow-ups about your inquiry and appointment confirmations. We do not send promotional messages through this program.</p>
+<h2>How to opt in</h2>
+<p>You opt in by ticking the optional SMS box when you submit an inquiry on our website. Consent is not required to submit an inquiry or use our services.</p>
+<h2>How to opt out (STOP)</h2>
+<p>Reply <strong>STOP</strong> to any message at any time. You will receive one message confirming that you have been unsubscribed, and no further messages will be sent unless you opt in again.</p>
+<h2>Help (HELP)</h2>
+<p>Reply <strong>HELP</strong> to any message for assistance, or call us at <a href="{TEL}">{PHONE}</a>.</p>
+<h2>Message frequency</h2>
+<p>Message frequency varies depending on your inquiry and any appointments you schedule.</p>
+<h2>Charges</h2>
+<p>Message and data rates may apply, according to your mobile plan. {BRAND} does not charge for text messages.</p>
+<h2>Carriers and delivery</h2>
+<p>Mobile carriers are not liable for delayed or undelivered messages. Delivery depends on your carrier and device, and is not guaranteed.</p>
+<h2>Privacy</h2>
+<p>We do not sell, rent or share your mobile phone number or SMS consent with third parties or affiliates for marketing or promotional purposes. See our <a href="{link("privacy-policy/")}">Privacy Policy</a>.</p>
+<h2>Support</h2>
+<p>{OWNER}, operating as {BRAND}<br>Phone: <a href="{TEL}">{PHONE}</a></p>'''
+
 for name, path, heading, crumb in STANDARD:
     title, desc, raw_html = durable_page(name)
     content = drop_first_heading(clean_html(raw_html), heading)
+    if name == 'privacy-policy':
+        content = PRIVACY_HTML
     if name == 'about':
         # Durable splits the brand name into its own heading; rejoin it with the sentence it starts.
         content = re.sub(r'(?:<h[23]>\s*' + BRAND + r'\s*</h[23]>\s*)?<h2>is a family owned', f'<h2>{BRAND} is a family owned', content, count=1)
@@ -263,6 +316,12 @@ for name, path, heading, crumb in STANDARD:
             + f'<div class="container article-grid{" no-side" if not side else ""}"><article class="prose">{content}</article>{side}</div>')
     write(path, page(title, body, path, desc, body_cls='inner'))
     record(path, title, heading, desc)
+
+sms_title, sms_desc = f'SMS Terms | {BRAND}', f'How {BRAND} text messages about property inquiries work: frequency, charges, STOP and HELP, and support.'
+write('sms-terms/', page(sms_title, page_hero('SMS Terms', '<span>SMS Terms</span>')
+                         + f'<div class="container article-grid no-side"><article class="prose">{SMS_TERMS_HTML}</article></div>',
+                         'sms-terms/', sms_desc, body_cls='inner'))
+record('sms-terms/', sms_title, 'SMS Terms', sms_desc)
 
 # --------------------------------------------------------------------------------------------
 # Blog: all posts from the site's own page data
@@ -330,7 +389,6 @@ scripts = re.sub(r'function doneHtml\(\)\{.*?\n\}', '''function doneHtml(){retur
 scripts = scripts.replace('label="Sent"', 'label="Preview complete"')
 scripts = scripts.replace('if(consent&&!consent.checked) problems.push("the tick box so we are allowed to contact you");', '')
 scripts = scripts.replace('consent:{given:true,', 'consent:{given:!!(consent && consent.checked),')
-scripts = scripts.replace('I agree to receive text messages', '(Optional) I agree to receive text messages')
 scripts = scripts.replace('if(window.console) console.info("[lead payload]", lead);', '/* Preview only: no transmission, PII logging or conversion event. */')
 scripts = re.sub(r'function getGuide\(e\)\{[^\n]+\}', 'function getGuide(e){ e.preventDefault(); top.location.href="../blog/"; return false; }', scripts)
 scripts = scripts.replace('"Send Me The Guide":"Send This And Call Me Back"', '"Finish Preview":"Finish Preview"')
@@ -364,6 +422,20 @@ FUNNEL_SUBS = [
 for a, b in FUNNEL_SUBS:
     scripts = scripts.replace(a, b)
     quiz = quiz.replace(a, b)
+# SMS consent supplied by the client (16 November 2026). Optional, unchecked, not required to submit.
+# Covers only inquiry and appointment messages; promotional texting needs separate consent.
+SMS_CONSENT = ('I agree to receive non-marketing text messages from Manzo Capital LLC, operating as IBuyRedding, about my property inquiry, '
+               'including follow-ups and appointment confirmations. Message frequency varies. Message and data rates may apply. '
+               'Reply STOP to unsubscribe or HELP for assistance. Consent is not required to submit an inquiry or use our services.')
+consent_js = ("h+='<label class=\"consent\"><input type=\"checkbox\" id=\"consent\" name=\"smsConsent\" value=\"yes\">'\n"
+              f"    +'<span><b class=\"opt\">Optional.</b> {SMS_CONSENT.replace(chr(39), chr(92) + chr(39))} '\n"
+              f"    +'<a href=\"{link('sms-terms/')}\" target=\"_blank\" rel=\"noopener\">SMS Terms</a> · "
+              f"<a href=\"{link('privacy-policy/')}\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a></span></label>'")
+scripts, n = re.subn(r"h\+='<label class=\"consent\">.*?</span></label>'", lambda m: consent_js, scripts, count=1, flags=re.S)
+assert n == 1, 'consent block not found'
+scripts = scripts.replace("Consent wording carried over from the REI template default. IBuyRedding's\n     own SMS consent wording has not been confirmed yet.",
+                          'SMS consent wording supplied by the client on 2026-11-16. Optional and\n     unchecked; it covers inquiry and appointment messages only.')
+assert 'checked' not in consent_js
 quiz = quiz.replace('Most people are in more than one situation at once.', 'What’s happening with your house?')
 quiz = re.sub(r'<p class="sec-p">.*?</p>', '<p class="sec-p">Choose everything that applies. We’ll ask a few relevant questions so the next conversation starts in the right place.</p><p class="preview-note">This is a demonstration. Please use made-up details. No inquiry will be sent.</p>', quiz, count=1, flags=re.S)
 leftover = sorted(set(re.findall(r'Kustom|Milwaukee|Wisconsin|homebuyerswi|262\) 432', scripts + quiz)))
@@ -384,7 +456,7 @@ quiz_hero = (f'<section class="page-hero quiz-hero"><div class="hero-glow g1"></
              f'<div class="quiz-trust"><span>{icon("check")}About two minutes</span><span>{icon("check")}No obligation</span><a href="{TEL}">{icon("phone")}{PHONE}</a>{g_badge("dark")}</div></div></section>')
 quiz_frame = (f'<section class="quiz-wrap" id="quiz"><div class="container"><div class="quiz-card"><iframe id="assessment-frame" title="Property situation assessment" src="{link("assessment/")}" loading="eager"></iframe></div></div></section>')
 quiz_more = (f'<section class="section quiz-more"><div class="container article-grid no-side"><article class="prose"><p><strong>#1 Most Trusted Cash Home Buyer in Redding Ca!</strong></p>'
-             f'<p>Sell your house as-is. Pay No Fees. On your schedule. Tell us about the property and we’ll send you a “no strings attached” offer!</p><p>Call or Text <a href="{TEL}">{PHONE}</a></p></article></div></section>')
+             f'<p>Sell your house as-is. Pay No Fees. On your schedule. Tell us about the property and we’ll send you a “no strings attached” offer!</p><p>Call <a href="{TEL}">{PHONE}</a></p></article></div></section>')
 frame_js = '<script>addEventListener("DOMContentLoaded",()=>{const f=document.getElementById("assessment-frame");f.src+="?"+new URLSearchParams(location.search).toString();addEventListener("message",e=>{if(e.origin===location.origin&&e.source===f.contentWindow&&e.data?.type==="funnel-height"&&Number.isFinite(e.data.height))f.style.height=Math.max(520,e.data.height+10)+"px";});});</script>'
 write('get-a-cash-offer-today/', page(q_title, quiz_hero + quiz_frame + quiz_more, 'get-a-cash-offer-today/', q_desc, extra=frame_js, body_cls='inner quiz-page', sticky=False))
 
@@ -420,7 +492,7 @@ home = f'''
       <ul class="hero-points"><li>{icon("check")}Sell as-is</li><li>{icon("check")}Pay no fees</li><li>{icon("check")}On your schedule</li></ul>
       <p class="lede">#1 Most Trusted Cash Home Buyer in Redding Ca! Tell us what’s going on with the house and we’ll send you a “no strings attached” offer.</p>
       <div class="picker"><p class="picker-title">What’s going on with the house? <span>Pick one to start</span></p>{chips()}
-        <p class="picker-foot">More than one fits? You can tell us about all of them. <a href="{TEL}">Or call or text {PHONE}</a></p></div>
+        <p class="picker-foot">More than one fits? You can tell us about all of them. <a href="{TEL}">Or call {PHONE}</a></p></div>
     </div>
     <div class="hero-visual">
       <div class="arch-ring"></div>
@@ -444,7 +516,7 @@ home = f'''
     <div class="intro-copy reveal">
       <p class="eyebrow">Conveniences</p>
       <h2>Get a Free &amp; Fast Cash Offer</h2>
-      <p class="big">Sell your house as-is. Pay No Fees. On your schedule. Call or Text <a href="{TEL}">{PHONE}</a>.</p>
+      <p class="big">Sell your house as-is. Pay No Fees. On your schedule. Call <a href="{TEL}">{PHONE}</a>.</p>
       <p><strong>Selling Fast and Easy.</strong> We buy homes quickly in Shasta County, CA, offering fast cash solutions for distressed sellers. Avoid lengthy processes and sell your home with ease.</p>
       <p><strong>No Real Estate Fees or Commissions.</strong> We buy homes directly, so you don’t pay any real estate fees or commissions. This saves you money and time, making the selling process stress-free and simple.</p>
       <div class="callout" style="--c:var(--brand)"><h3>Sell in As-is Condition with No Repairs</h3><p>We buy homes in their current condition. Avoid repair costs and sell your property without extra hassle or delay. Get convenience and peace of mind in the selling process.</p></div>
@@ -493,7 +565,7 @@ home = f'''
   <div class="container">
     <div class="head center reveal"><p class="eyebrow">Any house. Any story.</p><h2>We buy houses for <span class="grad">any reason, any condition, any challenge.</span></h2></div>
     <div class="reason-grid">{reasons}</div>
-    <div class="reason-foot reveal"><p>Get Your Cash Offer Today. Let us help you navigate through the home selling process hassle-free.</p><p class="call-line">Call or Text {PHONE}</p></div>
+    <div class="reason-foot reveal"><p>Get Your Cash Offer Today. Let us help you navigate through the home selling process hassle-free.</p><p class="call-line">Call {PHONE}</p></div>
   </div>
 </section>
 
