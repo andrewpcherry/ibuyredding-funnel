@@ -16,14 +16,14 @@
 
    Pulled from homebuyerswi.com's own CSS custom properties on
    2026-09-10, not invented:
-     --color-brand-primary  #0ca0da   (link + brand blue)
-     --color-brand-primary-darker  #086b91
+     --color-brand-primary  #24B2E3   (link + brand blue)
+     --color-brand-primary-darker  #137FA6
      --color-brand-primary-lighter #3ec1f4
-     --color-brand-secondary-dark  #065a79
-     --color-brand-secondary-darker #021d27
+     --color-brand-secondary-dark  #0F3D4F
+     --color-brand-secondary-darker #07090A
      --color-brand-secondary-lighter #c5edfc
-     --color-button         #ff8800   (their CTA orange)
-     --color-button-darker  #b35f00
+     --color-button         #FFCC00   (their CTA orange)
+     --color-button-darker  #8A6D00
      --body-color           #373a3c
    Headings and body on their site are Source Sans Pro. Source Sans 3
    is the same family, current name, served by Google Fonts.
@@ -39,13 +39,13 @@
   --violet:#6C5CE0;   --violet-soft:#EDEAFC;    /* inherited / estate     */
   --crimson:#D6353B;  --crimson-soft:#FBE7E8;   /* foreclosure / deadline */
   --gold:#C68A05;     --gold-soft:#FBF0D3;      /* needs work             */
-  --brand:#0CA0DA;    --brand-soft:#DFF3FC;     /* rental                 */
+  --brand:#24B2E3;    --brand-soft:#DFF3FC;     /* rental                 */
   --emerald:#12A06B;  --emerald-soft:#DBF5EA;   /* moving by a date       */
   --slate:#5A6B82;    --slate-soft:#E9EDF3;     /* just working it out    */
   --amber:#FFB300;    --amber-soft:#FFF2D4;     /* flags and warnings     */
 
   /* the client's own action colour */
-  --act:#FF8800; --act-2:#B35F00; --act-soft:#FFF0DE;
+  --act:#FFCC00; --act-2:#8A6D00; --act-soft:#FFF7D6;
 
   --paper:#FFFFFF;
   --tint:#F4F9FC;
@@ -57,13 +57,13 @@
   --ink-2:#373A3C;
   --ink-soft:#5F7080;
 
-  --night:#021D27;
-  --night-2:#065A79;
+  --night:#07090A;
+  --night-2:#0F3D4F;
 
   --r:20px; --r-sm:12px;
-  --sh-sm:0 2px 4px rgba(2,29,39,.06);
-  --sh:0 4px 12px rgba(2,29,39,.07), 0 18px 42px rgba(2,29,39,.10);
-  --sh-lg:0 8px 22px rgba(2,29,39,.09), 0 34px 76px rgba(2,29,39,.15);
+  --sh-sm:0 2px 4px rgba(7,9,10,.06);
+  --sh:0 4px 12px rgba(7,9,10,.07), 0 18px 42px rgba(7,9,10,.10);
+  --sh-lg:0 8px 22px rgba(7,9,10,.09), 0 34px 76px rgba(7,9,10,.15);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -112,7 +112,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0)}
 .btn-act{background:var(--act);color:#fff;box-shadow:0 6px 0 0 var(--act-2)}
-.btn-act:hover{background:#CC6D00;box-shadow:0 8px 0 0 var(--act-2)}
+.btn-act:hover{background:#E6B800;box-shadow:0 8px 0 0 var(--act-2)}
 .btn-act:active{box-shadow:0 3px 0 0 var(--act-2)}
 .btn-g{background:var(--act);color:#fff;box-shadow:0 6px 0 0 var(--act-2)}
 .btn-g:active{box-shadow:0 3px 0 0 var(--act-2)}
@@ -263,7 +263,7 @@ section{padding:76px 0}
 .nextup{margin-top:28px;background:var(--brand-soft);border:2.5px solid var(--brand);
   border-radius:var(--r);padding:24px 26px}
 .nextup h5{margin:0;font-size:13px;font-weight:900;letter-spacing:.12em;
-  text-transform:uppercase;color:#065A79}
+  text-transform:uppercase;color:#0F3D4F}
 .nextup p{margin-top:12px;font-size:17px;color:var(--ink-2);font-weight:400}
 
 .combo{margin-top:24px;border:3px solid var(--crimson);background:var(--crimson-soft);
@@ -299,7 +299,7 @@ textarea.in{resize:vertical}
 .consent{display:flex;gap:14px;align-items:flex-start;margin-top:22px;background:var(--tint);
   border:2px solid var(--line);border-radius:var(--r-sm);padding:18px 20px;font-size:16px;color:var(--ink-2)}
 .consent input{margin-top:3px;width:22px;height:22px;accent-color:var(--act);flex:0 0 auto}
-.consent a{color:#086B91;font-weight:700}
+.consent a{color:#137FA6;font-weight:700}
 .form .btn-g,.form .btn-act{width:100%;margin-top:26px;font-size:20px;padding:22px 32px}
 .fineprint{margin-top:18px;font-size:15px;color:var(--ink-soft);text-align:center}
 .err{margin-top:20px;background:var(--crimson-soft);border:2.5px solid var(--crimson);
@@ -408,8 +408,8 @@ footer a{color:#9FC0CE}
 .va-launch{position:fixed;right:22px;bottom:24px;z-index:60;display:flex;align-items:center;gap:12px;
   background:var(--night);color:#fff;border:0;cursor:pointer;font-family:inherit;
   font-weight:800;font-size:16px;padding:14px 22px 14px 16px;border-radius:999px;
-  box-shadow:0 12px 30px -6px rgba(2,29,39,.5);transition:transform .16s,box-shadow .16s}
-.va-launch:hover{transform:translateY(-3px);box-shadow:0 18px 38px -8px rgba(2,29,39,.55)}
+  box-shadow:0 12px 30px -6px rgba(7,9,10,.5);transition:transform .16s,box-shadow .16s}
+.va-launch:hover{transform:translateY(-3px);box-shadow:0 18px 38px -8px rgba(7,9,10,.55)}
 .va-launch .ring{position:relative;width:38px;height:38px;border-radius:50%;background:var(--act);
   display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .va-launch .ring::after{content:"";position:absolute;inset:0;border-radius:50%;
@@ -421,7 +421,7 @@ footer a{color:#9FC0CE}
 .va-launch[hidden]{display:none}
 
 .va-panel{position:fixed;right:22px;bottom:24px;z-index:61;width:min(400px,calc(100vw - 32px));
-  background:#fff;border-radius:22px;box-shadow:0 30px 80px -14px rgba(2,29,39,.5);
+  background:#fff;border-radius:22px;box-shadow:0 30px 80px -14px rgba(7,9,10,.5);
   overflow:hidden;display:flex;flex-direction:column;max-height:min(660px,calc(100vh - 48px));
   animation:vain .3s cubic-bezier(.2,.8,.3,1) both}
 @keyframes vain{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 92" role="img" aria-label="IBuyRedding Home Cash Offer">
+  <g stroke-linejoin="miter">
+    <path d="M58 40 92 10 126 40" fill="none" stroke="#24B2E3" stroke-width="11"/>
+    <path d="M58 40V25" stroke="#24B2E3" stroke-width="9"/>
+    <path d="M118 33 144 10 182 40" fill="none" stroke="#0B0C0E" stroke-width="11"/>
+    <g fill="#0B0C0E"><rect x="84" y="28" width="6" height="6"/><rect x="93" y="28" width="6" height="6"/><rect x="84" y="37" width="6" height="6"/><rect x="93" y="37" width="6" height="6"/></g>
+  </g>
+  <text x="130" y="72" text-anchor="middle" font-family="Montserrat,'Avenir Next','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="34" letter-spacing="-.5"><tspan fill="#24B2E3">IBuy</tspan><tspan fill="#0B0C0E"> Redding</tspan></text>
+  <text x="130" y="88" text-anchor="middle" font-family="Montserrat,'Avenir Next','Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="10.5" letter-spacing="5.2" fill="#0B0C0E">HOME CASH OFFER</text>
+</svg>

@@ -2,7 +2,7 @@
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Original root ?s= links continue into the matching assessment branch.
-  if(new URLSearchParams(location.search).has('s')&&location.pathname==='/homebuyerswi-funnel/'){location.replace('get-a-cash-offer-today/'+location.search+'#quiz');return;}
+  if(new URLSearchParams(location.search).has('s')&&location.pathname==='/ibuyredding-funnel/'){location.replace('get-a-cash-offer-today/'+location.search+'#quiz');return;}
 
   // Mobile menu
   var toggle=document.querySelector('.menu-toggle'),nav=document.getElementById('navigation');
