@@ -1,8 +1,33 @@
 (function(){
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Original root ?s= links continue into the matching assessment branch.
-  if(new URLSearchParams(location.search).has('s')&&location.pathname==='/ibuyredding-funnel/'){location.replace('get-a-cash-offer-today/'+location.search+'#quiz');return;}
+  // Lead form: contact details first (step 1), then optional situation questions (step 2).
+  // PREVIEW MODE: nothing is sent. At launch, step 1 posts the lead to GHL (so a drop-off is
+  // still captured) and step 2 updates that lead with the situations chosen.
+  document.querySelectorAll('[data-lead-form]').forEach(function(form){
+    var err=form.querySelector('.lf-error');
+    function show(n){
+      form.querySelectorAll('.lf-step').forEach(function(s){s.hidden=s.getAttribute('data-step')!==String(n);});
+      var cur=form.querySelector('[data-step="'+n+'"]');
+      if(form.getBoundingClientRect().top<70)form.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      cur.focus({preventScroll:true});
+    }
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var el=form.elements,miss=[],first=null;
+      function check(name,label,ok){var f=el.namedItem(name),bad=!ok(f.value.trim());f.setAttribute('aria-invalid',bad?'true':'false');if(bad){miss.push(label);if(!first)first=f;}}
+      check('firstName','your first name',function(v){return v.length>0;});
+      check('lastName','your last name',function(v){return v.length>0;});
+      check('address','the property address',function(v){return v.length>4;});
+      check('phone','a 10-digit phone number',function(v){var d=v.replace(/\D/g,'');return d.length===10||(d.length===11&&d.charAt(0)==='1');});
+      check('email','a valid email (or leave it blank)',function(v){return !v||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);});
+      if(miss.length){err.textContent='Please add '+miss.join(', ')+'.';err.hidden=false;first.focus();return;}
+      err.hidden=true;
+      form.querySelector('[data-first]').textContent=el.namedItem('firstName').value.trim();
+      show(2);
+    });
+    form.querySelectorAll('[data-next]').forEach(function(b){b.addEventListener('click',function(){show(3);});});
+  });
 
   // Mobile menu
   var toggle=document.querySelector('.menu-toggle'),nav=document.getElementById('navigation');
