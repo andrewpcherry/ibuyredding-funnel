@@ -1,6 +1,6 @@
 # IBuyRedding — replacement website preview
 
-Built from the REI template default (andrewpcherry/homebuyerswi-funnel), rebranded for IBuyRedding (ibuyredding.com), a brand of Manzo Capital LLC. The current production site and DNS are unchanged.
+Built from the REI template default (andrewpcherry/homebuyerswi-funnel), rebranded for IBuyRedding (ibuyredding.com), a brand of Manzo Capital LLC. Custom-domain deployment is configured for ibuyredding.com. Intake remains in preview mode pending delivery implementation and acceptance.
 
 - Simplified to match cash.ibuyredding.com (client feedback, 17 November 2026): one primary blue (the logo blue `#38B6FF`) for every button, link and highlight; white and light gray sections; navy text; dark photo hero. Official IBuyRedding logo, roof-icon favicon, Bree Serif headings.
 - Link preview: `img/og-image.png` (logo on black, 1200x630) on every page; homepage title "IBuyRedding | Sell Your House Fast for Cash in Redding, CA".
@@ -18,8 +18,8 @@ Built from the REI template default (andrewpcherry/homebuyerswi-funnel), rebrand
 - The Privacy Policy was rewritten around what this site does and now protects mobile numbers and SMS consent records from third-party marketing. Manzo should confirm it matches its actual practices (CRM and messaging providers, analytics and ad tags, data requests) before launch.
 - The site says "Call" only until texting on the public number (530) 638-2296 is verified. Never publish Oscar's private notification number.
 - Keep preview mode until inquiry delivery is finished: step 1 should post the lead to GHL (so drop-offs are captured) and step 2 should update it. Test receipt in Manzo's GHL account, Oscar's notification and conversion tracking before showing a genuine success message.
-- At launch, point `OG_IMAGE` at ibuyredding.com.
-- Swap the preview base path (`/ibuyredding-funnel/`) and noindex settings, then get client approval before any DNS change.
+- Asset/navigation paths and OG_IMAGE now use ibuyredding.com.
+- Production paths are configured; retain noindex until live intake and conversion acceptance. DNS changes were performed by Oscar; Andrew authorized the custom-domain binding on 17 November 2026.
 
 ## Files
 

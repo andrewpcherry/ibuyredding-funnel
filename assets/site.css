@@ -1,4 +1,4 @@
-@font-face{font-family:Source;src:url('/ibuyredding-funnel/assets/source-sans.woff2') format('woff2');font-weight:200 900;font-display:swap}
+@font-face{font-family:Source;src:url('/assets/source-sans.woff2') format('woff2');font-weight:200 900;font-display:swap}
 :root{
   /* One primary blue (the logo blue), navy text, white and light gray sections. */
   --brand:#38B6FF;--brand-d:#0B72B0;--brand-soft:#E8F6FF;--brand-h:#1FA6F5;
@@ -104,7 +104,7 @@ br.d{display:inline}
 .float-card.hello{left:-54px;top:18%;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px}
 .float-card.hello small{display:block;font-size:12px;color:var(--ink-soft);font-weight:600}
 .float-card.hello b{font-size:19px}
-.avatar-dot{width:42px;height:42px;border-radius:50%;background:url('/ibuyredding-funnel/assets/oscar-manzo.jpg') 50% 32%/cover;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--emerald)}
+.avatar-dot{width:42px;height:42px;border-radius:50%;background:url('/assets/oscar-manzo.jpg') 50% 32%/cover;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--emerald)}
 .float-card.quote{right:-40px;bottom:12%;max-width:270px;padding:18px 20px;animation-delay:-3s;border-left:5px solid var(--act)}
 .float-card.quote p{color:var(--night);font-weight:700;font-size:16.5px;line-height:1.35}
 .float-card.quote footer{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600}
@@ -746,7 +746,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .btn-phone .lbl{display:none}
 
 /* Hero: darkened house photo, white text, blue highlight, the form card */
-.hero{background:linear-gradient(rgba(11,18,32,.82),rgba(11,18,32,.82)),url('/ibuyredding-funnel/assets/house-street.jpg') center/cover no-repeat;padding:64px 0 72px}
+.hero{background:linear-gradient(rgba(11,18,32,.82),rgba(11,18,32,.82)),url('/assets/house-street.jpg') center/cover no-repeat;padding:64px 0 72px}
 .hero-glow,.hero-dots,.closing-rings,.mke-glow,.blob,.arch-ring{display:none}
 .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:56px;align-items:center}
 .pill{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}

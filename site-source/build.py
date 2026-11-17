@@ -14,9 +14,9 @@ from datetime import datetime
 import json, re, html, os, csv
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = '/ibuyredding-funnel/'
+BASE = '/'
 ORIGIN = 'https://ibuyredding.com'
-PREVIEW = 'https://andrewpcherry.github.io' + BASE
+PREVIEW = ORIGIN + BASE
 RAW = Path(os.environ.get('IBR_SNAPSHOT', ROOT.parent / 'ibuyredding-snapshot-2026-11-16'))
 esc = html.escape
 CSS_V = '20261117a'
