@@ -92,7 +92,7 @@ def lead_form(uid='offer', tag='h2'):
             f'id="jcJ5QiuhLGyBRTfDmS3q" title="Request a cash offer from IBuyRedding" '
             f'data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe>'
             f'<p><a href="{survey}">Open the inquiry form directly</a></p>'
-            f'<p><a href="{link("sms-terms/")}">SMS Terms</a> · <a href="{link("privacy-policy/")}">Privacy Policy</a></p>'
+            f'<p><a href="{link("sms-terms/")}">SMS Terms of Service</a> · <a href="{link("privacy-policy/")}">Privacy Policy</a></p>'
             f'<script defer src="https://link.msgsndr.com/js/form_embed.js"></script></section>')
 
 
@@ -153,7 +153,7 @@ def footer(sticky=True):
             f'<div class="footer-brand"><img class="footer-logo" src="{link("img/logo-white.png")}" alt="{BRAND}" width="190" height="82">'
             f'<p>Local cash home buyers.<br>{MARKET}.</p>{g_badge("dark")}</div>'
             f'<div><b>Explore</b><a href="{link("about/")}">About {BRAND}</a><a href="{link()}#process">How it works</a><a href="{link()}#compare">Traditional vs. {BRAND}</a><a href="{link()}#stories">Seller reviews</a><a href="{link("local-businesses-in-redding--ca/")}">Local businesses</a></div>'
-            f'<div><b>For homeowners</b><a href="{link("blog/")}">Seller resources</a><a href="{link("sell-inherited-house-redding/")}">Inherited a house</a><a href="{link("faq/")}">Frequently asked questions</a><a href="{link("privacy-policy/")}">Privacy policy</a><a href="{link("sms-terms/")}">SMS terms</a></div>'
+            f'<div><b>For homeowners</b><a href="{link("blog/")}">Seller resources</a><a href="{link("sell-inherited-house-redding/")}">Inherited a house</a><a href="{link("faq/")}">Frequently asked questions</a><a href="{link("privacy-policy/")}">Privacy policy</a><a href="{link("sms-terms/")}">SMS Terms of Service</a></div>'
             f'<div><b>We buy houses in</b>' + ''.join(f'<a href="{link()}#areas">{c}</a>' for c in COUNTIES) + '</div>'
             f'<div><b>Start a conversation</b><a class="footer-phone" href="{TEL}">{PHONE}</a><p>{BRAND} is a brand of {OWNER}</p></div>'
             f'</div><div class="container footer-bottom">© 2026 {OWNER}</div></footer>'
@@ -303,7 +303,7 @@ PRIVACY_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
 <p>We do not send promotional text messages unless you have given separate consent for them.</p>
 <h2>Mobile numbers and SMS consent</h2>
 <p><strong>We do not sell, rent or share your mobile phone number or your SMS consent with third parties or affiliates for their marketing or promotional purposes.</strong> Text messaging opt-in data and consent records are never shared with any third party, except with the service providers that deliver our messages on our behalf and are not permitted to use them for anything else.</p>
-<p>See our <a href="{link("sms-terms/")}">SMS Terms</a> for how our text messages work, including how to opt out.</p>
+<p>See our <a href="{link("sms-terms/")}">SMS Terms of Service</a> for how our text messages work, including how to opt out.</p>
 <h2>When we share information</h2>
 <p>We do not sell your personal information. We share it only:</p>
 <ul><li>With service providers that help us run our business, such as our customer relationship management system, phone and text messaging providers, and website hosting, who may use it only to provide those services to us;</li>
@@ -358,11 +358,11 @@ for name, path, heading, crumb in STANDARD:
     write(path, page(title, body, path, desc, body_cls='inner'))
     record(path, title, heading, desc)
 
-sms_title, sms_desc = f'SMS Terms | {BRAND}', f'How {BRAND} text messages about property inquiries work: frequency, charges, STOP and HELP, and support.'
-write('sms-terms/', page(sms_title, page_hero('SMS Terms', '<span>SMS Terms</span>')
+sms_title, sms_desc = f'SMS Terms of Service | {BRAND}', f'How {BRAND} text messages about property inquiries work: frequency, charges, STOP and HELP, and support.'
+write('sms-terms/', page(sms_title, page_hero('SMS Terms of Service', '<span>SMS Terms of Service</span>')
                          + f'<div class="container article-grid no-side"><article class="prose">{SMS_TERMS_HTML}</article></div>',
                          'sms-terms/', sms_desc, body_cls='inner'))
-record('sms-terms/', sms_title, 'SMS Terms', sms_desc)
+record('sms-terms/', sms_title, 'SMS Terms of Service', sms_desc)
 
 # --------------------------------------------------------------------------------------------
 # Blog: all posts from the site's own page data
