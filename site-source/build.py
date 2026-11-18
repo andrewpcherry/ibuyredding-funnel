@@ -317,7 +317,7 @@ PRIVACY_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
 <h2>Changes to this policy</h2>
 <p>We may update this policy from time to time. The date at the top shows when it last changed.</p>
 <h2>Contact us</h2>
-<p>{OWNER}, operating as {BRAND}<br>Business mailing address: 16811 Winchell Dr, Redding, CA 96003<br>Phone: <a href="{TEL}">{PHONE}</a><br>Website: <a href="{link()}">ibuyredding.com</a></p>'''
+<p>{OWNER}, operating as {BRAND}<br>Business mailing address: 16811 Winchell Dr, Redding, CA 96003<br>Email: <a href="mailto:oscar@ibuyredding.com">oscar@ibuyredding.com</a><br>Phone: <a href="{TEL}">{PHONE}</a><br>Website: <a href="{link()}">ibuyredding.com</a></p>'''
 
 SMS_TERMS_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
 <h2>Program</h2>
@@ -337,7 +337,7 @@ SMS_TERMS_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
 <h2>Privacy</h2>
 <p>We do not sell, rent or share your mobile phone number or SMS consent with third parties or affiliates for marketing or promotional purposes. See our <a href="{link("privacy-policy/")}">Privacy Policy</a>.</p>
 <h2>Support</h2>
-<p>{OWNER}, operating as {BRAND}<br>Business mailing address: 16811 Winchell Dr, Redding, CA 96003<br>Phone: <a href="{TEL}">{PHONE}</a></p>'''
+<p>{OWNER}, operating as {BRAND}<br>Business mailing address: 16811 Winchell Dr, Redding, CA 96003<br>Email: <a href="mailto:oscar@ibuyredding.com">oscar@ibuyredding.com</a><br>Phone: <a href="{TEL}">{PHONE}</a></p>'''
 
 for name, path, heading, crumb in STANDARD:
     title, desc, raw_html = durable_page(name)
