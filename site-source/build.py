@@ -91,7 +91,7 @@ def lead_form(uid='offer', tag='h2', compact_consent=False):
                f'<{tag} class="lf-title">Get Your Free Cash Offer</{tag}><p class="lf-sub">60 seconds. No obligation.</p>')
     return (f'<section class="lead-card" id="{uid}" aria-label="Get your free cash offer">'
             f'{heading}'
-            f'<p>Enter a U.S. phone number with +1. The property questions on the next screen are optional.</p>{consent}'
+            f'<p>The property questions on the next screen are optional.</p>{consent}'
             f'<iframe src="{survey}" style="border:none;width:100%;min-height:720px" scrolling="no" '
             f'id="jcJ5QiuhLGyBRTfDmS3q" title="Request a cash offer from IBuyRedding" '
             f'data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe>'
