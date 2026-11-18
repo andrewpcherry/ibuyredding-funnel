@@ -87,8 +87,10 @@ def lead_form(uid='offer', tag='h2', compact_consent=False):
     survey = 'https://api.leadconnectorhq.com/widget/survey/jcJ5QiuhLGyBRTfDmS3q?source=IBuyRedding%20Main%20Website'
     consent = ('<p class="lf-sub">Text updates are optional.</p>' if compact_consent else
                '<p class="lf-sub">Optional SMS from Manzo Capital LLC, operating as IBuyRedding, covers property inquiry follow-ups and appointment confirmations. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for assistance. You can request an offer without agreeing to texts.</p>')
+    heading = (f'<style>.offer-card-header{{margin:0 0 16px;padding:0 0 14px;border-bottom:1px solid #dce6ef}}.offer-card-header .lf-title{{margin:0;color:#102a43;font-family:inherit;font-size:clamp(24px,3vw,32px);font-weight:750;line-height:1.12;letter-spacing:-.025em;text-wrap:balance}}.offer-card-header p{{margin:7px 0 0;color:#334e68;font-size:15px;line-height:1.4}}</style><header class="offer-card-header"><{tag} class="lf-title">Get your free cash offer</{tag}><p>No obligation. Takes about a minute.</p></header>' if compact_consent else
+               f'<{tag} class="lf-title">Get Your Free Cash Offer</{tag}><p class="lf-sub">60 seconds. No obligation.</p>')
     return (f'<section class="lead-card" id="{uid}" aria-label="Get your free cash offer">'
-            f'<{tag} class="lf-title">Get Your Free Cash Offer</{tag}><p class="lf-sub">60 seconds. No obligation.</p>'
+            f'{heading}'
             f'<p>Enter a U.S. phone number with +1. The property questions on the next screen are optional.</p>{consent}'
             f'<iframe src="{survey}" style="border:none;width:100%;min-height:720px" scrolling="no" '
             f'id="jcJ5QiuhLGyBRTfDmS3q" title="Request a cash offer from IBuyRedding" '
