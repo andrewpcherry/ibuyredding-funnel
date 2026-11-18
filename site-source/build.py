@@ -87,7 +87,7 @@ def lead_form(uid='offer', tag='h2'):
     survey = 'https://api.leadconnectorhq.com/widget/survey/jcJ5QiuhLGyBRTfDmS3q?source=IBuyRedding%20Main%20Website'
     return (f'<section class="lead-card" id="{uid}" aria-label="Get your free cash offer">'
             f'<{tag} class="lf-title">Get Your Free Cash Offer</{tag}><p class="lf-sub">60 seconds. No obligation.</p>'
-            f'<p>Enter a U.S. phone number with +1. The property questions on the next screen are optional.</p>'
+            f'<p>Enter a U.S. phone number with +1. The property questions on the next screen are optional.</p><p class="lf-sub">Optional SMS from Manzo Capital LLC, operating as IBuyRedding, covers property inquiry follow-ups and appointment confirmations. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for assistance. You can request an offer without agreeing to texts.</p>'
             f'<iframe src="{survey}" style="border:none;width:100%;min-height:720px" scrolling="no" '
             f'id="jcJ5QiuhLGyBRTfDmS3q" title="Request a cash offer from IBuyRedding" '
             f'data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe>'
@@ -311,6 +311,8 @@ PRIVACY_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
 <li>When required by law, or to protect our rights or the safety of others.</li></ul>
 <h2>Keeping your information secure</h2>
 <p>We take reasonable steps to protect your information from unauthorized access, alteration, disclosure or destruction, and limit access to the people who need it to respond to you.</p>
+<h2>Cookies and tracking</h2>
+<p>The embedded HighLevel inquiry form may use cookies or browser storage to operate. Your browser lets you manage cookies. Blocking them may affect the form. You can also call us to submit an inquiry.</p>
 <h2>Your choices</h2>
 <ul><li>Reply <strong>STOP</strong> to any text message to stop receiving texts. Reply <strong>HELP</strong> for help.</li>
 <li>Call us at <a href="{TEL}">{PHONE}</a> to ask what information we hold about you, or to ask us to correct or delete it. California residents may have additional rights under California law.</li></ul>
@@ -322,6 +324,8 @@ PRIVACY_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
 SMS_TERMS_HTML = f'''<p><em>Last updated: {UPDATED}</em></p>
 <h2>Program</h2>
 <p>{OWNER}, operating as {BRAND}, sends non-marketing text messages about property inquiries to people who opt in on our website. Messages include follow-ups about your inquiry and appointment confirmations. We do not send promotional messages through this program.</p>
+<h2>Age eligibility</h2>
+<p>You must be 18 or older to enroll in the SMS program.</p>
 <h2>How to opt in</h2>
 <p>You opt in by ticking the optional SMS box when you submit an inquiry on our website. Consent is not required to submit an inquiry or use our services.</p>
 <h2>How to opt out (STOP)</h2>
