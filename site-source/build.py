@@ -84,37 +84,16 @@ def btn(label='Get my cash offer', href=QUIZ, cls='btn'):
 
 
 def lead_form(uid='offer', tag='h2'):
-    """Contact details first (step 1), then optional situation questions (step 2).
-    Preview mode: nothing is sent. At launch, step 1 posts the lead to GHL and step 2 updates it."""
-    f = lambda n: f'{uid}-{n}'
-    opts = ''.join(f'<label class="lf-opt"><input type="checkbox" name="situation" value="{k}"><span>{label}</span></label>' for k, _, label, *_ in SITUATIONS)
-    terms = (f'<a href="{link("sms-terms/")}" target="_blank" rel="noopener">SMS Terms</a> · '
-             f'<a href="{link("privacy-policy/")}" target="_blank" rel="noopener">Privacy Policy</a>')
-    return (f'<form class="lead-card" id="{uid}" data-lead-form novalidate aria-label="Get your free cash offer">'
-            f'<div class="lf-step" data-step="1">'
+    survey = 'https://api.leadconnectorhq.com/widget/survey/jcJ5QiuhLGyBRTfDmS3q?source=IBuyRedding%20Main%20Website'
+    return (f'<section class="lead-card" id="{uid}" aria-label="Get your free cash offer">'
             f'<{tag} class="lf-title">Get Your Free Cash Offer</{tag}><p class="lf-sub">60 seconds. No obligation.</p>'
-            f'<div class="lf-row"><div class="lf-field"><label for="{f("first")}">First Name</label><input id="{f("first")}" name="firstName" autocomplete="given-name" required></div>'
-            f'<div class="lf-field"><label for="{f("last")}">Last Name</label><input id="{f("last")}" name="lastName" autocomplete="family-name" required></div></div>'
-            f'<div class="lf-field"><label for="{f("address")}">Property Address</label><input id="{f("address")}" name="address" autocomplete="street-address" placeholder="123 Main St, Redding, CA" required></div>'
-            f'<div class="lf-field"><label for="{f("phone")}">Phone</label><input id="{f("phone")}" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>'
-            f'<label class="lf-consent"><input type="checkbox" name="smsConsent" value="yes"><span><b>Optional.</b> {SMS_CONSENT} {terms}</span></label>'
-            f'<div class="lf-field"><label for="{f("email")}">Email <span class="lf-opt-tag">(optional)</span></label><input id="{f("email")}" name="email" type="email" autocomplete="email"></div>'
-            f'<p class="lf-error" role="alert" hidden></p>'
-            f'<button class="btn btn-block" type="submit">Get My Cash Offer {icon("arrow")}</button>'
-            f'<p class="lf-privacy">{icon("lock")}<span>Your information is private. We never sell it or share it for marketing. <a href="{link("privacy-policy/")}">Privacy Policy</a></span></p>'
-            f'</div>'
-            f'<div class="lf-step" data-step="2" hidden tabindex="-1">'
-            f'<p class="lf-ok">{icon("check")}<span>Thanks, <b data-first></b>. <small>Preview: nothing was sent.</small></span></p>'
-            f'<p class="lf-title">What’s going on with the house?</p><p class="lf-sub">Optional. Choose any that apply so we can prepare for our conversation.</p>'
-            f'<div class="lf-opts">{opts}</div>'
-            f'<button class="btn btn-block" type="button" data-next>Continue {icon("arrow")}</button>'
-            f'<button class="lf-skip" type="button" data-next>Skip this step</button>'
-            f'</div>'
-            f'<div class="lf-step" data-step="3" hidden tabindex="-1">'
-            f'<p class="lf-ok">{icon("check")}<span>You’ve reached the end of the preview.</span></p>'
-            f'<p class="lf-sub">Nothing was sent. On the live site, your details reach {BRAND} as soon as you press “Get My Cash Offer”, and this step confirms it.</p>'
-            f'<a class="btn btn-block" href="{TEL}">{icon("phone")}Call {PHONE}</a>'
-            f'</div></form>')
+            f'<p>Enter a U.S. phone number with +1. The property questions on the next screen are optional.</p>'
+            f'<iframe src="{survey}" style="border:none;width:100%;min-height:720px" scrolling="no" '
+            f'id="jcJ5QiuhLGyBRTfDmS3q" title="Request a cash offer from IBuyRedding" '
+            f'data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe>'
+            f'<p><a href="{survey}">Open the inquiry form directly</a></p>'
+            f'<p><a href="{link("sms-terms/")}">SMS Terms</a> · <a href="{link("privacy-policy/")}">Privacy Policy</a></p>'
+            f'<script defer src="https://link.msgsndr.com/js/form_embed.js"></script></section>')
 
 
 def rating_box(cls='rating-box'):
@@ -153,7 +132,7 @@ def nav_href(p):
 def header():
     # Header is just: logo, phone button, menu.
     return (f'{ICONS}<a class="skip" href="#main">Skip to content</a>'
-            f'<div class="preview-bar">Website preview <span>Forms are in demonstration mode · No inquiries are sent</span></div>'
+            f'<div class="preview-bar">IBuyRedding <span>Request a cash offer online</span></div>'
             f'<header class="site-header" data-header><div class="container nav">'
             f'<a class="logo" href="{link()}"><img src="{link("img/logo.png")}" alt="{BRAND} home" width="176" height="76"></a>'
             f'<nav id="navigation" aria-label="Main navigation">' + ''.join(f'<a href="{nav_href(p)}">{n}</a>' for n, p in NAV) + '</nav>'
@@ -177,7 +156,7 @@ def footer(sticky=True):
             f'<div><b>For homeowners</b><a href="{link("blog/")}">Seller resources</a><a href="{link("sell-inherited-house-redding/")}">Inherited a house</a><a href="{link("faq/")}">Frequently asked questions</a><a href="{link("privacy-policy/")}">Privacy policy</a><a href="{link("sms-terms/")}">SMS terms</a></div>'
             f'<div><b>We buy houses in</b>' + ''.join(f'<a href="{link()}#areas">{c}</a>' for c in COUNTIES) + '</div>'
             f'<div><b>Start a conversation</b><a class="footer-phone" href="{TEL}">{PHONE}</a><p>{BRAND} is a brand of {OWNER}</p></div>'
-            f'</div><div class="container footer-bottom">© 2026 {OWNER} <span>Website preview · No inquiries are sent from this preview.</span></div></footer>'
+            f'</div><div class="container footer-bottom">© 2026 {OWNER}</div></footer>'
             f'{s}<script src="{link("assets/site.js?v=" + CSS_V)}" defer></script>')
 
 
@@ -212,7 +191,7 @@ def page(title, body, path='', description='', head='', extra='', body_cls='', s
             f'<link rel="stylesheet" href="{link("assets/site.css?v=" + CSS_V)}"><script>document.documentElement.classList.add("js")</script>{extra}</head>'
             f'<body class="{body_cls}">{header()}<main id="main">{body}</main>{closing()}{footer(sticky)}</body></html>')
     # On pages that carry the lead form, every "Get my cash offer" link goes straight to it.
-    return out.replace(f'href="{QUIZ}"', 'href="#offer"') if 'data-lead-form' in body else out
+    return out.replace(f'href="{QUIZ}"', 'href="#offer"') if 'jcJ5QiuhLGyBRTfDmS3q' in body else out
 
 
 written = []

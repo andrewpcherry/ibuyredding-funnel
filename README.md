@@ -10,7 +10,7 @@ Built from the REI template default (andrewpcherry/homebuyerswi-funnel), rebrand
 - Contact-first lead form in the homepage hero and at `get-a-cash-offer-today/`: step 1 First Name, Last Name, Property Address, Phone, optional SMS consent, Email (optional); step 2 optional situation questions. Reviews and a video section sit directly below the hero form.
 - The homepage video shows a placeholder until Oscar sends the YouTube link (set `YOUTUBE_ID` in `site-source/build.py`).
 - The multi-situation assessment is no longer built (the form now starts with contact details); its source stays in `site-source/`.
-- Preview pages are noindex. Contact fields are demonstration-only, make no network request and emit no conversion events.
+- Preview pages are noindex. The home and cash-offer pages embed the native HighLevel inquiry survey. The static site emits no conversion events.
 
 ## Before launch
 
